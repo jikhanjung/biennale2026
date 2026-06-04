@@ -25,12 +25,38 @@
     will-change:opacity,transform;
   }
 
+  /* scroll hint — shown until the first scroll */
+  .hint{
+    position:fixed;left:50%;bottom:28px;
+    transform:translateX(-50%);
+    z-index:10;
+    color:#e5342a;
+    pointer-events:none;
+    animation:hint-blink 1.4s ease-in-out infinite;
+    transition:opacity .4s ease;
+  }
+  .hint.hide{opacity:0;}
+  .hint svg{display:block;width:34px;height:34px;}
+  @keyframes hint-blink{
+    0%,100%{opacity:1;transform:translateX(-50%) translateY(0);}
+    50%{opacity:.25;transform:translateX(-50%) translateY(6px);}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .hint{animation:none;}
+  }
+
 </style>
 </head>
 <body>
 
 <div class="scroll-space" id="track">
   <div class="stage" id="stage"></div>
+</div>
+
+<div class="hint" id="hint" aria-hidden="true">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="6 9 12 15 18 9" />
+  </svg>
 </div>
 
 <script>
@@ -71,7 +97,18 @@
     ticking = false;
   }
 
+  // hide the scroll hint once the user actually moves
+  const hint = document.getElementById('hint');
+  let hintGone = false;
+  function dismissHint() {
+    if (hintGone) return;
+    hintGone = true;
+    hint.classList.add('hide');
+    setTimeout(() => hint.remove(), 500);
+  }
+
   function onScroll() {
+    if (window.scrollY > 4) dismissHint();
     if (!ticking) { requestAnimationFrame(update); ticking = true; }
   }
 

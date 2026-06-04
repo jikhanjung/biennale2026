@@ -19,6 +19,7 @@ rsync -a --delete \
   "$SRC/index1.html" \
   "$SRC/index2.html" \
   "$SRC/index3.html" \
+  "$SRC/index4.html" \
   "$SRC/data" \
   "$DEST/"
 

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>2026 미학비엔날레 — 시안 비교</title>
+<meta name="description" content="2026 미학비엔날레 홍보 페이지 시안 비교 — 세 가지 표현 방식을 골라 볼 수 있습니다." />
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@200;300;400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#f3dcd9;
+    --bg2:#d8cfdd;
+    --ink:#241c20;
+    --ink-soft:#5a4d52;
+    --red:#e5342a;
+    --red-deep:#9e2018;
+    --pink:#e8889a;
+    --paper:#fbeeec;
+    --maxw:1100px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Noto Sans KR",system-ui,sans-serif;
+    color:var(--ink);
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+    background:radial-gradient(120% 90% at 80% 0%, #f6e0db 0%, #ecd2d4 42%, #d7cee0 100%);
+    display:flex;flex-direction:column;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* stamp tag (poster motif) */
+  .tag{
+    display:inline-block;background:var(--red);color:#fff;font-weight:700;
+    padding:.18em .55em;border-radius:4px;line-height:1.25;
+    box-shadow:2px 3px 0 rgba(0,0,0,.12);
+  }
+
+  main{flex:1 0 auto;padding:64px 0 72px}
+
+  .head{margin-bottom:52px}
+
+  h1{
+    font-weight:700;font-size:clamp(2.3rem,5.4vw,3.9rem);line-height:1.05;
+    letter-spacing:-.02em;color:var(--ink);
+  }
+  h1 small{display:block;font-weight:500;font-size:.34em;letter-spacing:.16em;color:var(--red-deep);margin-top:12px}
+  .intro{margin-top:22px;font-size:1.05rem;color:var(--ink-soft);max-width:60ch;line-height:1.85}
+  .intro b{color:var(--ink);font-weight:700}
+
+  .kicker{
+    display:inline-block;font-weight:700;letter-spacing:.28em;font-size:.76rem;
+    color:var(--red);text-transform:uppercase;margin-bottom:22px;
+  }
+
+  /* version cards */
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+  @media(max-width:980px){.cards{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.cards{grid-template-columns:1fr}}
+  .card{
+    position:relative;display:flex;flex-direction:column;
+    background:#fff;border:1px solid rgba(158,32,24,.14);border-radius:18px;
+    padding:30px 28px 26px;overflow:hidden;
+    box-shadow:0 16px 34px -26px rgba(120,30,40,.5);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .card:hover{transform:translateY(-6px);box-shadow:0 26px 46px -24px rgba(120,30,40,.55)}
+  .card .num{
+    font-weight:700;font-size:.82rem;letter-spacing:.14em;color:var(--red);
+    margin-bottom:14px;
+  }
+  .card h2{font-weight:700;font-size:1.45rem;line-height:1.25;margin-bottom:10px;color:var(--ink)}
+  .card p{font-size:.92rem;color:var(--ink-soft);line-height:1.8;flex:1 0 auto}
+  .card .go{
+    margin-top:22px;display:inline-flex;align-items:center;gap:.4em;align-self:flex-start;
+    font-weight:700;font-size:.92rem;color:#fff;background:var(--red);
+    padding:.5em 1.1em;border-radius:999px;transition:.2s;
+  }
+  .card:hover .go{background:var(--red-deep)}
+  .card .go::after{content:"→";font-size:1.05em;line-height:1}
+
+  footer{flex-shrink:0;background:#241c20;color:#cdb2b0;padding:30px 0}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:.82rem}
+  footer b{color:var(--pink);font-weight:700}
+</style>
+</head>
+<body>
+
+<main>
+  <div class="wrap">
+
+    <div class="head">
+      <div>
+        <span class="kicker">Draft Comparison</span>
+        <h1>홍보 페이지 시안 비교
+          <small>2026 미학비엔날레</small>
+        </h1>
+        <p class="intro">2026 미학비엔날레 홍보 페이지의 <b>네 가지 표현 방식</b>입니다.
+          아래에서 골라 들어가 비교해 보세요. 실제 행사 정보는 각 시안 안에 담겨 있습니다.</p>
+      </div>
+    </div>
+
+    <span class="kicker">4 Drafts</span>
+    <div class="cards">
+
+      <a class="card" href="index1.html">
+        <div class="num">01</div>
+        <h2>디자인 페이지</h2>
+        <p>기획·프로그램·라인업·관람안내를 한눈에 담은 메인 페이지. 프로그램 북 갤러리와 라이트박스 포함.</p>
+        <span class="go">들어가기</span>
+      </a>
+
+      <a class="card" href="index2.html">
+        <div class="num">02</div>
+        <h2>이미지 보기</h2>
+        <p>프로그램 북 12쪽을 가공 없이 그대로 세로로 넘겨보는 원본 뷰. 텍스트·장식 없이 이미지만.</p>
+        <span class="go">들어가기</span>
+      </a>
+
+      <a class="card" href="index3.html">
+        <div class="num">03</div>
+        <h2>크로스페이드</h2>
+        <p>스크롤에 따라 12쪽이 부드럽게 겹쳐 넘어가는 풀스크린 연출. 포스터를 영상처럼 감상.</p>
+        <span class="go">들어가기</span>
+      </a>
+
+      <a class="card" href="index4.html">
+        <div class="num">04</div>
+        <h2>스와이프</h2>
+        <p>좌우·상하로 한 번 스와이프할 때마다 한 쪽씩 넘어가는 풀스크린 연출. 모바일에 최적화.</p>
+        <span class="go">들어가기</span>
+      </a>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span><b>2026 미학비엔날레</b> — 홍보 페이지 시안 비교</span>
+    <span>내부 검토용</span>
+  </div>
+</footer>
+
+</body>
+</html>
