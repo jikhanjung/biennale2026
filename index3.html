@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>2026 미학비엔날레</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{background:#000;}
+  body{font-family:system-ui,sans-serif;}
+
+  /* tall scroll track drives the pinned stage */
+  .scroll-space{position:relative;}
+
+  .stage{
+    position:sticky;top:0;
+    height:100vh;width:100%;
+    overflow:hidden;
+  }
+  .slide{
+    position:absolute;inset:0;
+    width:100%;height:100%;
+    object-fit:contain;
+    opacity:0;
+    will-change:opacity,transform;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="scroll-space" id="track">
+  <div class="stage" id="stage"></div>
+</div>
+
+<script>
+  const N = 12;
+  const src = i => `data/KakaoTalk_20260604_080120989_${String(i).padStart(2,'0')}.png`;
+
+  const stage = document.getElementById('stage');
+  const track = document.getElementById('track');
+
+  const slides = [];
+  for (let i = 1; i <= N; i++) {
+    const img = document.createElement('img');
+    img.className = 'slide';
+    img.src = src(i);
+    img.alt = '';
+    stage.appendChild(img);
+    slides.push(img);
+  }
+
+  // scroll length per image (smaller vh = faster scrolling between images)
+  const VH_PER_IMAGE = 100;
+  track.style.height = (N * VH_PER_IMAGE) + 'vh';
+
+  let ticking = false;
+  function update() {
+    const max = track.offsetHeight - window.innerHeight;
+    const p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+    const f = p * (N - 1);            // fractional position 0 .. N-1
+    const W = 0.10;                   // crossfade half-width (smaller = faster/snappier)
+
+    slides.forEach((img, i) => {
+      // full opacity through the segment, quick crossfade only near the boundary
+      const o = Math.min(1, Math.max(0, (0.5 + W - Math.abs(f - i)) / (2 * W)));
+      img.style.opacity = o;
+      img.style.transform = `scale(${0.99 + 0.01 * o})`;
+    });
+
+    ticking = false;
+  }
+
+  function onScroll() {
+    if (!ticking) { requestAnimationFrame(update); ticking = true; }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+</script>
+</body>
+</html>
