@@ -109,7 +109,7 @@
 
 <div class="stage" id="stage"></div>
 
-<div class="counter" id="counter" aria-hidden="true"><b class="cur">01</b> <span class="total">/ 12</span></div>
+<div class="counter" id="counter" aria-hidden="true"><b class="cur">01</b> <span class="total">/ 13</span></div>
 
 <button class="nav prev" id="prev" type="button" aria-label="이전 페이지">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 6 9 12 15 18" /></svg>
@@ -134,8 +134,12 @@
 </div>
 
 <script>
-  const N = 12;
-  const src = i => `data/KakaoTalk_20260604_080120989_${String(i).padStart(2,'0')}.png`;
+  // 12-page program book + credit page (different filename, so list explicitly)
+  const SRC = [
+    ...Array.from({length:12}, (_,k) => `data/KakaoTalk_20260604_080120989_${String(k+1).padStart(2,'0')}.png`),
+    'data/KakaoTalk_20260605_174042446.png',
+  ];
+  const N = SRC.length;
 
   const stage = document.getElementById('stage');
 
@@ -143,7 +147,7 @@
   for (let i = 1; i <= N; i++) {
     const img = document.createElement('img');
     img.className = 'slide';
-    img.src = src(i);
+    img.src = SRC[i - 1];
     img.alt = '';
     stage.appendChild(img);
     slides.push(img);

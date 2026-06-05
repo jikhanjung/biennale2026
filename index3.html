@@ -60,8 +60,12 @@
 </div>
 
 <script>
-  const N = 12;
-  const src = i => `data/KakaoTalk_20260604_080120989_${String(i).padStart(2,'0')}.png`;
+  // 12-page program book + credit page (different filename, so list explicitly)
+  const SRC = [
+    ...Array.from({length:12}, (_,k) => `data/KakaoTalk_20260604_080120989_${String(k+1).padStart(2,'0')}.png`),
+    'data/KakaoTalk_20260605_174042446.png',
+  ];
+  const N = SRC.length;
 
   const stage = document.getElementById('stage');
   const track = document.getElementById('track');
@@ -70,7 +74,7 @@
   for (let i = 1; i <= N; i++) {
     const img = document.createElement('img');
     img.className = 'slide';
-    img.src = src(i);
+    img.src = SRC[i - 1];
     img.alt = '';
     stage.appendChild(img);
     slides.push(img);

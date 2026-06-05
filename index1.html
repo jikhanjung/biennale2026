@@ -506,8 +506,13 @@
 </div>
 
 <script>
-  const TOTAL = 12;
-  const srcOf = i => `data/KakaoTalk_20260604_080120989_${String(i).padStart(2,'0')}.png`;
+  // 12-page program book + credit page (different filename, so list explicitly)
+  const SRC = [
+    ...Array.from({length:12}, (_,k) => `data/KakaoTalk_20260604_080120989_${String(k+1).padStart(2,'0')}.png`),
+    'data/KakaoTalk_20260605_174042446.png',
+  ];
+  const TOTAL = SRC.length;
+  const srcOf = i => SRC[i - 1];
 
   // build gallery from the program pages
   const gal = document.getElementById('gal');
