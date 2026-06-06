@@ -14,7 +14,8 @@ if [ ! -d "$DEST" ]; then
 fi
 
 echo "==> $SRC -> $DEST 동기화"
-rsync -a --delete \
+rsync -a --delete --delete-excluded \
+  --exclude='*_old*.png' \
   "$SRC/index.html" \
   "$SRC/index_list.html" \
   "$SRC/index1.html" \
