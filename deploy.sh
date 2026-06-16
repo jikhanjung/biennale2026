@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # 2026 미학비엔날레 정적 사이트 배포 스크립트.
 # 소스(index*.html + data/)를 nginx가 서빙하는 /srv/2026biennale 로 동기화한다.
-#   접속: http://<서버IP>/2026biennale/   (nginx: sites-available/2026biennale)
+#   접속(정규): https://biennale.app/        (nginx: sites-available/biennale.app, 루트 서빙 + HSTS)
+#   접속(레거시): http://<서버IP>/2026biennale/  (nginx: sites-available/2026biennale, 동일 디렉토리)
 set -euo pipefail
 
 SRC="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -25,4 +26,4 @@ rsync -a --delete --delete-excluded \
   "$SRC/data" \
   "$DEST/"
 
-echo "==> 완료. http://<서버IP>/2026biennale/ 에서 확인하세요."
+echo "==> 완료. https://biennale.app/ 에서 확인하세요. (레거시: http://<서버IP>/2026biennale/)"
